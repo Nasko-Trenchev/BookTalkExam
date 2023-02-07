@@ -9,9 +9,8 @@ const app = express();
 setupViewEngine(app);
 
 app.use(express.static('src/public'));
-app.use(urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));
 app.use(router);
-
 
 app.listen(config.PORT, () => {
     console.log(`Server is listening on port... ${config.PORT}`)

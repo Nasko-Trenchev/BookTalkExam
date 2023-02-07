@@ -8,6 +8,7 @@ router.get('/', homeController.getHomePage);
 router.get('/404', homeController.getErrorPage);
 
 router.get('/login', authController.getLoginPage);
-router.get('/register', authController.getRegisterPage)
+router.get('/register', authController.getRegisterPage);
+router.post('/register', authController.postRegisterPage);
 
 module.exports = router;

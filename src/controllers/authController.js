@@ -1,3 +1,4 @@
+const authService = require('../services/authService');
 
 exports.getLoginPage = (req, res) =>{
 
@@ -7,7 +8,14 @@ exports.getLoginPage = (req, res) =>{
 
 exports.getRegisterPage = (req, res) =>{
 
-    const {email, username, password, repass } = req.body;
-    
     res.render('register');
+}
+
+exports.postRegisterPage = async (req, res) => {
+
+    const {email, username, password, repass} = req.body;
+
+    await authService.createUser({email, username, password, repass});
+    
+    res.redirect('/');
 }

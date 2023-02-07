@@ -7,5 +7,7 @@ exports.getLoginPage = (req, res) =>{
 
 exports.getRegisterPage = (req, res) =>{
 
+    const {email, username, password, repass } = req.body;
+    
     res.render('register');
 }

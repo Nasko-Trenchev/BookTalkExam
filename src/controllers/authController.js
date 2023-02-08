@@ -1,7 +1,5 @@
 const express = require('express');
 const authService = require('../services/authService');
-const jwt = require('../lib/jsonWebToken');
-const config = require('../config')
 
 exports.getLoginPage = (req, res) =>{
 
@@ -11,7 +9,8 @@ exports.getLoginPage = (req, res) =>{
 exports.postLoginPage = async (req, res) =>{
 
     const {email, password} = req.body;
-
+    const token = await authService.login(email, password);
+    res.cookie('auth', token, {httpOnly: true});
     res.redirect('/')
 }
 

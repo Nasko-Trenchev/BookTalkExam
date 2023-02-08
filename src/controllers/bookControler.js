@@ -1,24 +1,27 @@
 const bookService = require('../services/bookService');
 
+exports.getCatalog = async (req, res) =>{
+ 
+    const books = await bookService.getAllbooks().lean();
+    res.render('catalog', {books});
+}
+
+exports.getDetailPage = async (req, res) =>{
+
+    const book = await bookService.findBookById(req.params.id).lean();
+    res.render('details', {book});
+}
+
 exports.getCreatePage = (req, res) =>{
 
     res.render('create');
 }
 
-exports.getCatalog = async (req, res) =>{
+exports.postCreatePage = async (req, res) =>{
 
-    const bookCount = await bookService.bookCount();
-    
-    if(bookCount == 0){
-        return res.render('catalog', {bookCount});
-    }
-    
-    const books = await bookService.getAllbooks();
+    const {title, author, genre, stars, image, review} = req.body;
 
-    res.render('catalog', {books});
-}
+    const book = await bookService.createBookReview({title, author, genre, stars, image, review});
 
-exports.postCatalog = async (req, res) =>{
-
-    
+    res.redirect('/catalog')
 }

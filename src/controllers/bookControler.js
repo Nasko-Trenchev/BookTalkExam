@@ -9,10 +9,15 @@ exports.getCatalog = async (req, res) =>{
 
 exports.getDetailPage = async (req, res) =>{
 
+    const user = req.user;
     const book = await bookService.findBookById(req.params.id).lean();
-    const owner = isOwner(req.user, book)
-    const wished = hasWished(req.user, book);
-    res.render('details', {book, owner, wished});
+
+    if(user){
+        const owner = isOwner(req.user, book)
+        const wished = hasWished(req.user, book);
+        return res.render('details', {book, owner, wished});
+    }
+    res.render('details', {book});
 }
 
 exports.getCreatePage = (req, res) =>{

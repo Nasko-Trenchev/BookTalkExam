@@ -1,4 +1,5 @@
 const bookService = require('../services/bookService');
+const isOwner = require('../utils/bookUtils')
 
 exports.getCatalog = async (req, res) =>{
  
@@ -9,7 +10,8 @@ exports.getCatalog = async (req, res) =>{
 exports.getDetailPage = async (req, res) =>{
 
     const book = await bookService.findBookById(req.params.id).lean();
-    res.render('details', {book});
+    const owner = isOwner(req.user, book)
+    res.render('details', {book, owner});
 }
 
 exports.getCreatePage = (req, res) =>{
@@ -21,7 +23,9 @@ exports.postCreatePage = async (req, res) =>{
 
     const {title, author, genre, stars, image, review} = req.body;
 
-    const book = await bookService.createBookReview({title, author, genre, stars, image, review});
+    const owner = req.user._id;
+
+    const book = await bookService.createBookReview({title, author, genre, stars, image, review, owner});
 
     res.redirect('/catalog')
 }

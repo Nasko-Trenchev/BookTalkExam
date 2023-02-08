@@ -22,4 +22,6 @@ router.get('/delete/:id', bookController.getDelete);
 router.get('/edit/:id', bookController.getEditPage);
 router.post('/edit/:id', bookController.postEditPage);
 
+router.get('/profile', bookController.getProfile);
+
 module.exports = router;

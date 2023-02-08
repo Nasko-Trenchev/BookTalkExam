@@ -4,23 +4,28 @@ const booksShema = new mongoose.Schema({
 
     title:{
         type: String,
-        required: true
+        required: true,
+        minLength: 2
     },
     author:{
         type: String,
-        required: true
+        required: true,
+        minLength: 5
     },
     image:{
         type: String,
-        required: true
+        required: true,
+        match: /^https?:\/\//,
     },
     review:{
         type: String,
-        required: true
+        required: true,
+        minLength: 5
     },
     genre:{
         type: String,
-        required: true      
+        required: true,
+        minLength: 3    
     },
     stars:{
         type: Number,

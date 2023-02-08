@@ -18,5 +18,8 @@ router.post('/create', bookController.postCreatePage);
 router.get('/catalog', bookController.getCatalog);
 router.get('/details/:id', bookController.getDetailPage);
 router.get('/wish/:id', bookController.getWishToRead);
+router.get('/delete/:id', bookController.getDelete);
+router.get('/edit/:id', bookController.getEditPage);
+router.post('/edit/:id', bookController.postEditPage);
 
 module.exports = router;

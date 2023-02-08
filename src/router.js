@@ -11,6 +11,7 @@ router.get('/login', authController.getLoginPage);
 router.post('/login', authController.postLoginPage);
 router.get('/register', authController.getRegisterPage);
 router.post('/register', authController.postRegisterPage);
+router.get('/logout', authController.getLogout);
 
 router.get('/create', bookController.getCreatePage)
 

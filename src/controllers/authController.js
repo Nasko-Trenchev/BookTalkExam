@@ -32,3 +32,9 @@ exports.postRegisterPage = async (req, res) => {
 
     res.redirect('/');
 }
+
+exports.getLogout = (req, res) =>{
+
+    res.clearCookie('auth');
+    res.redirect('/');
+}

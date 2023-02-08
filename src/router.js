@@ -14,5 +14,6 @@ router.post('/register', authController.postRegisterPage);
 router.get('/logout', authController.getLogout);
 
 router.get('/create', bookController.getCreatePage)
+router.get('/catalog', bookController.getCatalog);
 
 module.exports = router;

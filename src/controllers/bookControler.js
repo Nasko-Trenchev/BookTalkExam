@@ -30,3 +30,12 @@ exports.postCreatePage = async (req, res) =>{
 
     res.redirect('/catalog')
 }
+
+exports.getWishToRead = async (req, res) =>{
+
+    const book = await bookService.findBookById(req.params.id);
+    book.wishingList.push(req.user._id);
+    await book.save();
+
+    res.redirect(`/details/${req.params.id}`)
+}

@@ -6,7 +6,7 @@ function isOwner(user, book) {
 
 function hasWished(user, book){
 
-    return book.wishingList.includes(user._id);
+    return book.wishingList.includes(user._id)
 }
 
 module.exports = {

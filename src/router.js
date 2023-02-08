@@ -13,10 +13,10 @@ router.get('/register', authController.getRegisterPage);
 router.post('/register', authController.postRegisterPage);
 router.get('/logout', authController.getLogout);
 
-router.get('/create', bookController.getCreatePage)
-router.post('/create', bookController.postCreatePage)
+router.get('/create', bookController.getCreatePage);
+router.post('/create', bookController.postCreatePage);
 router.get('/catalog', bookController.getCatalog);
 router.get('/details/:id', bookController.getDetailPage);
-
+router.get('/wish/:id', bookController.getWishToRead);
 
 module.exports = router;

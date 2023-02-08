@@ -29,7 +29,7 @@ const booksShema = new mongoose.Schema({
         max: 5
     },
     wishingList:{
-        type: [Array],
+        type: [String],
         ref: 'User'
     },
     owner:{

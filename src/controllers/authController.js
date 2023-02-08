@@ -1,4 +1,3 @@
-const express = require('express');
 const authService = require('../services/authService');
 
 exports.getLoginPage = (req, res) =>{
@@ -10,7 +9,7 @@ exports.postLoginPage = async (req, res) =>{
 
     const {email, password} = req.body;
     const token = await authService.login(email, password);
-    res.cookie('auth', token, {httpOnly: true});
+    res.cookie('auth', token);
     res.redirect('/')
 }
 

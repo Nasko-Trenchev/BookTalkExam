@@ -1,8 +1,10 @@
 const User = require('../models/User');
+const jwt = require('../lib/jsonWebToken');
+const config = require('../config');
 
 exports.createUser = (data) => User.create(data);
 
-exports.getUser = (email) => User.findOne(email);
+exports.getUser = (email) => User.findOne({email});
 
 exports.login = async (email, password) =>{
 
@@ -14,7 +16,7 @@ exports.login = async (email, password) =>{
     }
 
     const isValid = await user.validatePassword(password);
-    
+
     if(!isValid){
 
         throw "User or password don`t match!"

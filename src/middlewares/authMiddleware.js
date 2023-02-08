@@ -3,7 +3,7 @@ const config = require('../config');
 
 exports.authentication = async (req, res, next) =>{
 
-    const token = res.cookie['auth'];
+    const token = req.cookies['auth'];
 
     if(token){
         try{
